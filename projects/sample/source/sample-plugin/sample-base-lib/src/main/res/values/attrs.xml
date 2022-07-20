@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StrokeShadowTextView">
+        <attr name="isNeedStroke_" format="boolean" />
+        <attr name="strokeWidth_" format="dimension" />
+        <attr name="strokeColor_" format="reference|color" />
+        <attr name="mFontWeight_" format="dimension" />
+        <attr name="isNeedShade_" format="boolean" />
+        <attr name="shadeStartColor_" format="reference|color" />
+        <attr name="shadeEndColor_" format="reference|color" />
+        <attr name="gradientHeight_" format="dimension" />
+        <attr name="isNeedStrokeShade_" format="boolean" />
+        <attr name="strokeShadeStartColor_" format="reference|color" />
+        <attr name="strokeShadeEndColor_" format="reference|color" />
+        <attr name="strokeGradientHeight_" format="dimension" />
+    </declare-styleable>
+</resources>
+
+
