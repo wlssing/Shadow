@@ -18,12 +18,18 @@
 
 package com.tencent.shadow.sample.plugin.app.lib.gallery.cases;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 import android.app.ActivityOptions;
 import android.app.Fragment;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -105,6 +111,21 @@ public class UseCaseSummaryFragment extends Fragment {
         mStartCase = (Button) view.findViewById(R.id.start_case);
         mCaseSummary = (TextView) view.findViewById(R.id.case_summary);
         mEnvironment = (TextView) view.findViewById(R.id.environment);
+        view.findViewById(R.id.test_notification).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotificationManager notificationManager = (NotificationManager) getActivity().getSystemService(NOTIFICATION_SERVICE);
+                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getActivity(),"com.tencent.shadow.sample.plugin.app.message");
+                mBuilder.setContentTitle("我是标题")
+                        .setContentText("我是内容")
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.collapse_test))
+                        .setSmallIcon(R.drawable.collapse_test)
+                        .setWhen(System.currentTimeMillis())
+                        .setTicker("我是测试内容")
+                        .setDefaults(Notification.DEFAULT_SOUND);
+                notificationManager.notify(10, mBuilder.build());
+            }
+        });
 
         mEnvironment.setText(PluginChecker.isPluginMode() ? "当前环境：插件模式" : "当前环境：独立安装");
     }
