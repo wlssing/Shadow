@@ -64,7 +64,9 @@ public class UseCaseSummaryFragment extends Fragment {
                 if (useCase.getPageParams() != null) {
                     intent.putExtras(useCase.getPageParams());
                 }
-
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 //只在API 21以上手工测试一下ActivityOptions
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     ActivityOptions activityOptions = ActivityOptions.makeCustomAnimation(
