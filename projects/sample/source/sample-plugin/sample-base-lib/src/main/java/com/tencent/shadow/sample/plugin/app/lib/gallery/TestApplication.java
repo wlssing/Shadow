@@ -19,6 +19,8 @@
 package com.tencent.shadow.sample.plugin.app.lib.gallery;
 
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 
 public class TestApplication extends Application {
 
@@ -31,6 +33,14 @@ public class TestApplication extends Application {
         sInstence = this;
         isOnCreate = true;
         super.onCreate();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("com.tencent.shadow.sample.plugin.app.message", "消息", NotificationManager.IMPORTANCE_DEFAULT);
+            channel.enableLights(false);
+            channel.enableVibration(false);
+            channel.setSound(null, null);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     public static TestApplication getInstance() {

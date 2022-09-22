@@ -3,8 +3,6 @@ package com.tencent.shadow.sample.plugin.app.lib;
 import static com.tencent.shadow.sample.plugin.app.lib.gallery.cases.UseCaseManager.useCases;
 
 import android.app.Application;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 
 import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.UseCaseManager;
 import com.tencent.shadow.sample.plugin.app.lib.gallery.cases.entity.UseCase;
@@ -35,14 +33,7 @@ public class UseCaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initCase();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("com.tencent.shadow.sample.plugin.app.message", "消息", NotificationManager.IMPORTANCE_DEFAULT);
-            channel.enableLights(false);
-            channel.enableVibration(false);
-            channel.setSound(null, null);
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
+
 
 
     }
